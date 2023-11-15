@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Pizza } from './pizza.entity';
+import { Recipe } from './recipe.entity';
 
 @Entity()
 export class Ingredient {
@@ -13,6 +13,6 @@ export class Ingredient {
   name!: string;
 
   @ApiProperty()
-  @ManyToMany(() => Pizza)
-  pizzas: Pizza[];
+  @ManyToMany(() => Recipe)
+  recipes: Recipe[];
 }

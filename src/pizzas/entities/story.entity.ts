@@ -6,18 +6,14 @@ import {
   OneToOne,
   Column,
 } from 'typeorm';
-import { Pizza } from './pizza.entity';
 import { Entity } from 'typeorm';
+import { Recipe } from './recipe.entity';
 
 @Entity()
 export class Story {
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
-
-  @OneToOne(() => Pizza)
-  @JoinColumn()
-  pizza: Pizza;
 
   @ApiProperty()
   @Column({ length: 500 })
@@ -27,4 +23,8 @@ export class Story {
   @Index()
   @Column({ length: 100 })
   city?: string;
+
+  @OneToOne(() => Recipe, (recipe) => recipe.story)
+  @JoinColumn()
+  recipe: Recipe;
 }

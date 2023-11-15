@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Pizza } from './pizza.entity';
+import { Recipe } from './recipe.entity';
 
 @Entity()
 export class Review {
@@ -12,6 +12,6 @@ export class Review {
   @Column({ length: 100 })
   name!: string;
 
-  @ManyToOne(() => Pizza, (pizza) => pizza.reviews)
-  pizza: Pizza;
+  @ManyToOne(() => Recipe, (recipe) => recipe.reviews)
+  recipe: Recipe;
 }

@@ -4,7 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Recipe } from './recipe.entity';
 
 @ChildEntity()
-export class Pizza extends Recipe {
+export class Calzone extends Recipe {
   @ApiProperty()
   @Index()
   @Column({ type: 'enum', enum: PizzaFlavor })

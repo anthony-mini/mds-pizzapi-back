@@ -6,9 +6,12 @@ import { Pizza } from './entities/pizza.entity';
 import { Story } from './entities/story.entity';
 import { Review } from './entities/review.entity';
 import { Ingredient } from './entities/ingredient.entity';
+import { Recipe } from './entities/recipe.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Pizza, Ingredient, Review, Story])],
+  imports: [
+    TypeOrmModule.forFeature([Pizza, Recipe, Ingredient, Review, Story]),
+  ],
   controllers: [PizzasController],
   providers: [PizzasService],
 })
