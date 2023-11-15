@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Index, Column } from 'typeorm';
+import { PizzaFlavor } from '../enums/pizza-flavor.enum';
 
 @Entity()
 export class Pizza {
@@ -8,6 +9,10 @@ export class Pizza {
   @Index({ unique: true })
   @Column({ length: 100 })
   name: string;
+
+  @Index()
+  @Column({ type: 'enum', enum: PizzaFlavor })
+  flavor: PizzaFlavor;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
