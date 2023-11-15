@@ -7,17 +7,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      database: 'pizzapi',
-      username: 'root',
-      password: 'root',
-      port: 8889,
-      host: 'localhost',
+      database: process.env.DB_NAME,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      port: +process.env.DB_PORT,
+      host: process.env.DB_HOST,
       autoLoadEntities: true,
       synchronize: true,
     }),
-    ConfigModule.forRoot(),
     PizzasModule,
   ],
   controllers: [AppController],
