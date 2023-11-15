@@ -15,7 +15,7 @@ export class Pizza {
   flavor: PizzaFlavor;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  created: Date;
 
   @Column({ default: false })
   speciality: boolean;
