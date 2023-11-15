@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   Index,
-  JoinColumn,
   PrimaryGeneratedColumn,
-  OneToOne,
   Column,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
 import { Entity } from 'typeorm';
 import { Recipe } from './recipe.entity';

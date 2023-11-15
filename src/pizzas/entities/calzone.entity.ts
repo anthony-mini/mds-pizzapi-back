@@ -1,5 +1,5 @@
 import { Index, Column, ChildEntity } from 'typeorm';
-import { PizzaFlavor } from '../enums/pizza-flavor.enum';
+//import { PizzaFlavor } from '../enums/pizza-flavor.enum';
 import { ApiProperty } from '@nestjs/swagger';
 import { Recipe } from './recipe.entity';
 
@@ -7,6 +7,6 @@ import { Recipe } from './recipe.entity';
 export class Calzone extends Recipe {
   @ApiProperty()
   @Index()
-  @Column({ type: 'enum', enum: PizzaFlavor })
-  flavor: PizzaFlavor;
+  @Column()
+  xl: boolean;
 }

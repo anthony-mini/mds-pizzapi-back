@@ -1,13 +1,13 @@
 import {
   Entity,
   PrimaryGeneratedColumn,
-  OneToOne,
-  ManyToMany,
-  OneToMany,
-  JoinTable,
   Index,
   Column,
   TableInheritance,
+  OneToMany,
+  OneToOne,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Story } from './story.entity';
@@ -25,7 +25,7 @@ export abstract class Recipe {
   @OneToOne(() => Story, (story) => story.recipe)
   story: Story;
 
-  @OneToMany(() => Story, (review) => review.recipe)
+  @OneToMany(() => Review, (review) => review.recipe)
   reviews: Review[];
 
   @ApiProperty()
