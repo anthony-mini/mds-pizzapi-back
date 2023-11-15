@@ -1,12 +1,35 @@
-import { Entity, PrimaryGeneratedColumn, Index, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Index,
+  Column,
+  OneToOne,
+  OneToMany,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { PizzaFlavor } from '../enums/pizza-flavor.enum';
 import { ApiProperty } from '@nestjs/swagger';
+import { Story } from './story.entity';
+import { Review } from './review.entity';
+import { Ingredient } from './ingredient.entity';
 
 @Entity()
 export class Pizza {
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
+
+  @OneToOne(() => Story, (story) => story.pizza)
+  story: Story;
+
+  @OneToMany(() => Story, (review) => review.pizza)
+  reviews: Review[];
+
+  @ApiProperty()
+  @ManyToMany(() => Ingredient)
+  @JoinTable()
+  ingredients: Ingredient[];
 
   @ApiProperty()
   @Index({ unique: true })
