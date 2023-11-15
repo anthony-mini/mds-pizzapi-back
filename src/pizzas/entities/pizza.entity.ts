@@ -28,7 +28,17 @@ export class Pizza {
 
   @ApiProperty()
   @ManyToMany(() => Ingredient)
-  @JoinTable()
+  @JoinTable({
+    name: 'pizza_ingredients', // Nom personnalisé pour la table de jointure
+    joinColumn: {
+      name: 'pizza_id', // Nom personnalisé pour la colonne de jointure de Pizza
+      referencedColumnName: 'id', // Colonne de référence dans Pizza
+    },
+    inverseJoinColumn: {
+      name: 'ingredient_id', // Nom personnalisé pour la colonne de jointure de Ingredient
+      referencedColumnName: 'id', // Colonne de référence dans Ingredient
+    },
+  })
   ingredients: Ingredient[];
 
   @ApiProperty()
